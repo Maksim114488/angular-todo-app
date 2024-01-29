@@ -9,4 +9,5 @@ export class FilterActivePipe implements PipeTransform {
   transform(todos: Todo[]): Todo[] {
     return todos.filter(todo => !todo.completed);
   }
+
 }

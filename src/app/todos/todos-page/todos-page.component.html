@@ -3,7 +3,7 @@
 
   <div class="todoapp__content">
     <header class="todoapp__header">
-      <button class="todoapp__toggle-all active"></button>
+      <button type="button" class="todoapp__toggle-all active"></button>
 
       <app-todo-form (save)="addTodo($event)"></app-todo-form>
     </header>
@@ -15,17 +15,17 @@
         (delete)="deleteTodo(todo)"
         (rename)="renameTodo(todo, $event)"
         (toggle)="toggleTodo(todo)"
-      ></app-todo>
+        ></app-todo>
     </section>
 
     <footer class="todoapp__footer">
-      <span class="todoapp__active-count">
+      <span class="todo-count">
         {{ activeCount$ | async }} items left
       </span>
 
       <app-filter></app-filter>
 
-      <button class="todoapp__clear-completed">
+      <button type="button" class="todoapp__clear-completed">
         Clear completed
       </button>
     </footer>
@@ -33,3 +33,4 @@
 
   <app-message></app-message>
 </div>
+

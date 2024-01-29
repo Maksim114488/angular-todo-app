@@ -1,13 +1,10 @@
-<div
-  class="todo"
-  [class.completed]="todo.completed"
->
+<div class="todo" [class.completed]="todo.completed">
   <label class="todo__status-label">
     <input
-      type="checkbox"
-      class="todo__status"
-      [checked]="todo.completed"
-      (change)="toggle.emit()"
+    type="checkbox"
+    class="todo__status"
+    [checked]="todo.completed"
+    (change)="toggle.emit()"
     />
   </label>
 
@@ -19,6 +16,7 @@
       placeholder="Empty todo will be deleted"
       name="title"
       [(ngModel)]="title"
+      (mouseenter)="titleField.focus()"
       (keyup.escape)="editing = false"
       (blur)="save()"
     />
@@ -26,21 +24,23 @@
 
   <ng-template #titleBlock>
     <span class="todo__title" (dblclick)="edit()">
-      {{ todo.title }}
+      {{ todo.title | lowercase | slice:0:4 }}
     </span>
 
+    <!-- {/* Remove button appears only on hover */} -->
     <button
-      class="todo__remove"
-      (click)="delete.emit()"
+    type="button"
+    class="todo__remove"
+    (click)="delete.emit()"
     >
-      x
+      ×
     </button>
   </ng-template>
 
-  <div
-    class="modal overlay"
-    [class.is-active]="false"
-  >
+
+
+  <!-- {/* overlay will cover the todo while it is being updated */} -->
+  <div class="modal overlay" [class.is-active]="false">
     <div class="modal-background has-background-white-ter"></div>
     <div class="loader"></div>
   </div>

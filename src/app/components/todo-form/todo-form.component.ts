@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-// ng g c components/todo-form
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
@@ -15,8 +14,9 @@ export class TodoFormComponent {
       nonNullable: true,
       validators: [
         Validators.required,
-      ],
-    }),
+        Validators.minLength(3),
+      ]
+    })
   });
 
   get title() {
@@ -27,8 +27,8 @@ export class TodoFormComponent {
     if (this.todoForm.invalid) {
       return;
     }
-
-    this.save.emit(this.title.value);
+    
+    this.save.emit(this.title.value)
     this.todoForm.reset();
   }
 }

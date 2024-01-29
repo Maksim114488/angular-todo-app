@@ -27,11 +27,9 @@ export class MessageComponent implements OnInit, OnDestroy {
     this.messageService.message$.pipe(
       takeUntil(this.destroy$$)
     )
-      .subscribe(text => {
-        console.log(2);
-
-        this.hidden = false;
-        this.message = text;
-      })
+    .subscribe(text => {
+      this.hidden = false;
+      this.message = text;
+    })
   }
 }
